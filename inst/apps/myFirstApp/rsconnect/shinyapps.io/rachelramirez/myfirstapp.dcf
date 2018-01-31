@@ -1,0 +1,10 @@
+name: myfirstapp
+title:
+username:
+account: rachelramirez
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 265003
+bundleId: 1197606
+url: https://rachelramirez.shinyapps.io/myfirstapp/
+when: 1517233142.99071

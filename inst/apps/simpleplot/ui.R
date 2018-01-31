@@ -1,7 +1,12 @@
 library(shiny)
 library(ggplot2)
- 
-dataSource <- read_excel("C:\\Users\\Rachel\\Desktop\\NPS_Folder\\NPS\\inst\\apps\\dataSource_r2.xlsx", sheet = "CONUS Data", range = "c3:iq514")
+ library(readxl)
+
+
+
+dataSource <- read_excel("C:\\Users\\Rachel\\Documents\\AFIT Masters OR Program\\R Class\\Project\\dataSource_r2.xlsx", sheet = "CONUS Data", range = "c3:iq514")
+
+devtools::use_data(dataSource)
 
 dataSource <- as.data.frame(dataSource)
 
@@ -41,16 +46,3 @@ ui <- fluidPage(
   )
 )
 
-# Define server function required to create the scatterplot
-server <- function(input, output) {
-  
-  # Create the scatterplot object the plotOutput function is expecting
-  output$scatterplot <- renderPlot({
-    ggplot(data = dataSource, aes_string(x = input$x, y = input$y,
-                                     color = input$z)) +
-      geom_point()
-  })
-}
-
-# Create a Shiny app object
-shinyApp(ui = ui, server = server)
