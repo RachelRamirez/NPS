@@ -2,4 +2,5 @@
 
 export(run_my_app)
 importFrom(Rcpp,evalCpp)
+importFrom(shiny,shinyAppDir)
 useDynLib(NPS)

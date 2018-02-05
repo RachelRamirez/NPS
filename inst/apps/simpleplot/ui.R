@@ -1,17 +1,4 @@
-library(shiny)
-library(ggplot2)
-library(readxl)
-
-# 
-# dataSource <- read_excel("C:\\Users\\Rachel\\Documents\\AFIT Masters OR Program\\R Class\\Project\\dataSource_r2.xlsx", sheet = "CONUS Data", range = "c3:iq514")
-# 
-devtools::use_data(dataSource)
-# 
-data(dataSource)
-
-# dataSource <- as.data.frame(dataSource)
-
-
+ 
 # Define UI for application that plots features of movies
 ui <- fluidPage(
   
