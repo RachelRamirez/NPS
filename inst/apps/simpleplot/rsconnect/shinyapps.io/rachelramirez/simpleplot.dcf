@@ -1,0 +1,12 @@
+name: simpleplot
+title: simpleplot
+username:
+account: rachelramirez
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 269383
+bundleId: 1203498
+url: https://rachelramirez.shinyapps.io/simpleplot/
+when: 1517517912.71639
+asMultiple: FALSE
+asStatic: FALSE

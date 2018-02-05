@@ -1,16 +1,16 @@
 library(shiny)
 library(ggplot2)
- library(readxl)
+library(readxl)
 
-
-
-dataSource <- read_excel("C:\\Users\\Rachel\\Documents\\AFIT Masters OR Program\\R Class\\Project\\dataSource_r2.xlsx", sheet = "CONUS Data", range = "c3:iq514")
-
+# 
+# dataSource <- read_excel("C:\\Users\\Rachel\\Documents\\AFIT Masters OR Program\\R Class\\Project\\dataSource_r2.xlsx", sheet = "CONUS Data", range = "c3:iq514")
+# 
 devtools::use_data(dataSource)
+# 
+data(dataSource)
 
-dataSource <- as.data.frame(dataSource)
+# dataSource <- as.data.frame(dataSource)
 
-#data(dataSource)
 
 # Define UI for application that plots features of movies
 ui <- fluidPage(
@@ -31,18 +31,25 @@ ui <- fluidPage(
       selectInput(inputId = "x", 
                   label = "X-axis:",
                   choices = colnames(dataSource), 
-                  selected = "Pop_Density_2010_50km"),  
-       
-      # Select variable for color
+                  selected = "siteID"),  
+      
+      # Select variable for x-axis
       selectInput(inputId = "z", 
                   label = "Color by:",
-                  choices = c("LCLUCI", "Season", "Elevation", "Slope", "TPI"),                  selected = "LCLUCI")  
+                  choices = colnames(dataSource), 
+                  selected = "LCLUCI")  
     ),
     
     # Outputs
     mainPanel(
-      plotOutput(outputId = "scatterplot")
+     
+        
+        plotOutput(outputId = "scatterplot", brush = "plot_brush"),
+        textOutput(outputId = "correlation"),
+        dataTableOutput(outputId = "table"))
     )
+    
+    
+    
   )
-)
 

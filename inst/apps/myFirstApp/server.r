@@ -12,7 +12,7 @@ server <- function(input, output, session) {
   
   output$table <- renderDataTable({
     
-    map_data[order(map_data[input$select]), ]
+   map_data[order(map_data[input$select]), ]
     
   })
 }
