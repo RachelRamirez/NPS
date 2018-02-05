@@ -1,7 +1,7 @@
 ---
 title: "proposal"
 author: "Rachel Ramirez"
-date: "January 17, 2018"
+date: Sys.date()
 output: github_document
 keep_md: yes
 ---
