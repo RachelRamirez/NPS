@@ -24,7 +24,7 @@ ui <- fluidPage(
       selectInput(inputId = "z", 
                   label = "Color by:",
                   choices = colnames(dataSource), 
-                  selected = "LCLUCI")  
+                  selected = "LCLUCI")
     ),
     
     # Outputs
