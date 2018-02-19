@@ -1,7 +1,7 @@
 ---
 title: "proposal"
 author: "Rachel Ramirez"
-date: `r Sys.date()`
+date: "`r Sys.Date()`"
 output: github_document
 keep_md: yes
 ---
@@ -11,13 +11,14 @@ keep_md: yes
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-hello `r Sys.date()`
+
+
 
 
   
 [![Build Status](https://travis-ci.org/rachelramirez/NPS.svg?branch=master)](https://travis-ci.org/rachelramirez/NPS)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rachelramirez/NPS?branch=master&svg=true)](https://ci.appveyor.com/project/rachelramirez/NPS)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NPS)](http://cran.r-project.org/package=NPS)
+<!-- [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NPS)](http://cran.r-project.org/package=NPS) -->
 [![Coverage Status](https://codecov.io/gh/rachelramirez/NPS/branch/master/graph/badge.svg)](https://codecov.io/gh/rachelramirez/NPS?branch=master)
 
 

@@ -1,10 +1,10 @@
 proposal
 ================
 Rachel Ramirez
-Sys.date()
+2018-02-19
 
 <!-- dont edit the MarkDown file, edit the RMarkdown file anad then knit -->
-[![Build Status](https://travis-ci.org/rachelramirez/NPS.svg?branch=master)](https://travis-ci.org/rachelramirez/NPS) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rachelramirez/NPS?branch=master&svg=true)](https://ci.appveyor.com/project/rachelramirez/NPS) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/NPS)](http://cran.r-project.org/package=NPS) [![Coverage Status](https://codecov.io/gh/rachelramirez/NPS/branch/master/graph/badge.svg)](https://codecov.io/gh/rachelramirez/NPS?branch=master)
+[![Build Status](https://travis-ci.org/rachelramirez/NPS.svg?branch=master)](https://travis-ci.org/rachelramirez/NPS) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rachelramirez/NPS?branch=master&svg=true)](https://ci.appveyor.com/project/rachelramirez/NPS) <!-- [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NPS)](http://cran.r-project.org/package=NPS) --> [![Coverage Status](https://codecov.io/gh/rachelramirez/NPS/branch/master/graph/badge.svg)](https://codecov.io/gh/rachelramirez/NPS?branch=master)
 
 Explore NPS Acoustic Summary Data Analytic Proposal
 ---------------------------------------------------
