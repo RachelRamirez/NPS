@@ -8,8 +8,7 @@
 library(ggplot2)
 library(shiny)
 library(shinythemes)
-library(NPS)
-
+#library(NPS)
 #library(choroplethr)
 #library(choroplethrMaps)
 #library(readxl)

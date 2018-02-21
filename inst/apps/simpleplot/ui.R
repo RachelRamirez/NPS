@@ -1,4 +1,4 @@
- 
+
 # Define UI for application that plots features of movies
 ui <- fluidPage(
   

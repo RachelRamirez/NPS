@@ -2,3 +2,9 @@
 ^\.Rproj\.user$
 Readme.Rmd
 readme_files/
+^\.travis\.yml$
+^.*\.dll$
+^.*\.o$
+^.*\.so$
+philippinesR
+R\my_gadget\.R$

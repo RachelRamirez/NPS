@@ -7,7 +7,16 @@ Author: Rachel Ramirez
 Maintainer: Rachel Ramirez <Rachel.Ramirez@outlook.com>
 Description: This package will help visualize the modified National Park Service acoustic summary statistics dataset--by frequency, loudness equivalency, by park, by Lat/Long, etc.
 License: GPL (>= 2)
-Imports: Rcpp (>= 0.12.14)
+Imports: Rcpp (>= 0.12.14),
+          shiny,
+          shinythemes, 
+          tidyverse,
+          dplyr,
+          magrittr,
+          htmlwidgets
 LinkingTo: Rcpp
 RoxygenNote: 6.0.1
 Suggests: testthat
+Depends: R (>= 2.10)
+Remotes: timelyportfolio/parcoords
+NeedsCompilation: yes
