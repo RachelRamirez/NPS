@@ -8,6 +8,14 @@ ui <- fluidPage(
     # Inputs
     sidebarPanel(
       
+      
+      # Select data
+      selectInput(inputId = "Data", 
+                  label = "Data:",
+                  choices = c("original", "cleaned"), 
+                  selected = "original"),
+      
+      
       # Select variable for y-axis
       selectInput(inputId = "y", 
                   label = "Y-axis:",
