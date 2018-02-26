@@ -8,7 +8,7 @@
 library(ggplot2)
 library(shiny)
 library(shinythemes)
-#library(NPS)
+# library(NPS)
 #library(choroplethr)
 #library(choroplethrMaps)
 #library(readxl)
@@ -16,6 +16,9 @@ library(shinythemes)
 
 #devtools::use_data(dataSource, overwrite = TRUE)
 data('dataSource')
+# data('cleandata')
+ dataSource <- as.data.frame(dataSource)
 
-# dataSource <- as.data.frame(dataSource)
-
+ data('cleandata')
+ # data('cleandata')
+ cleandata <- as.data.frame(cleandata)

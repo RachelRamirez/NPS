@@ -1,7 +1,5 @@
 #' @title This is my title
-#' 
 #' @description This is my description
-#'
 #'@import shiny
 #'@import tidyverse
 #'@importFrom dplyr mutate
@@ -11,6 +9,8 @@
 #'@param dataSource A data.frame
 #'
 #' @export
+#' 
+#' 
 myparacoords <- function(dataSource){
   parcoords::parcoords(
   dataSource
@@ -21,18 +21,29 @@ myparacoords <- function(dataSource){
   ,mode = "queue"
   ,rate = 1
   # ,autoresize = TRUE
-  ,width = 2000
+  ,width = 1200
   ,height = 800
   ,brushMode = "1d-axes"
   ,color = list(colorScale = htmlwidgets::JS('d3.scale.category10()'),
-                  colorBy = "L90dBA")
+                  colorBy = "LCLUCI.labels")
   
 )
 }
 
 
-# #Exhaustive Regression Variables of Importance:
-# myparacoords(dataSource[,c("park", "Slope", "LCLUCI.labels", "TPI.labels", "Barren5km", "DistCoast", "Wind_CRU","Barren200m", "Forest200m", "Shrubland200m", "WaterNat200m", "WaterOnly200m", "Wetlands200m", "Transportation5km", "RecCon5km", "WaterOnly5km", "DistCoast", "DistHeliports", "FlightFreq25Mile",    "DistRailroads", "RddMajorPt" )])
+
+
+
+
+
+
+# # 
+# myparacoords(cleandata[, c("LCLUCI.labels", "HIHerbaceous200m",	 "RecCon5km",	 	"DistHeliports",	 	"DistRoadsMajor",	"FlightFreq25Mile",	"RddMajorPt","PopDensity_2010_50km", "park")])
+# 
+# 
+
+
+# 
 # 
 # `%<>%` <- magrittr::`%<>%`
 # `%>%`  <- magrittr::`%>%`
