@@ -1,6 +1,7 @@
 # Define server function required to create the scatterplot
 server <- function(input, output, session) {
   
+  #adding a function so that "clean" and "original" change the data:
   rv = reactiveValues()
   observe({
   if(input$Data == "original"){
@@ -12,13 +13,7 @@ server <- function(input, output, session) {
   
   # Create the scatterplot object the plotOutput function is expecting
   output$scatterplot <- renderPlot({
-    
-  #adding a function so that "clean" and "original" change the data:
-
-    
-    
-    
-    ggplot(data = rv$Data, aes_string(x = input$x, y = input$y,
+     ggplot(data = rv$Data, aes_string(x = input$x, y = input$y,
                                          color = input$z)) +
       geom_point()
   })

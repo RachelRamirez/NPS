@@ -1,5 +1,5 @@
-#' @title This is my title
-#' @description This is my description
+#'@title This is my title
+#'@description This is my description
 #'@import shiny
 #'@import tidyverse
 #'@importFrom dplyr mutate
@@ -8,7 +8,7 @@
 #'
 #'@param dataSource A data.frame
 #'
-#' @export
+#'@export
 #' 
 #' 
 myparacoords <- function(dataSource){
@@ -17,10 +17,10 @@ myparacoords <- function(dataSource){
   ,reorderable = T
   ,rownames = FALSE
   ,alpha=0.5
-   ,axisDots = 0
+  ,axisDots = 0
   ,mode = "queue"
   ,rate = 1
-  # ,autoresize = TRUE
+# ,autoresize = TRUE
   ,width = 1200
   ,height = 800
   ,brushMode = "1d-axes"

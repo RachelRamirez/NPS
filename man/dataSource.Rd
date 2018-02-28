@@ -10,6 +10,10 @@
 \item{this}{this}
 \item{this}{that}
 }}
+\usage{
+dataSource
+}
 \description{
 A dataset containing...
 }
+\keyword{datasets}
