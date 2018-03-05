@@ -24,19 +24,19 @@ ui <- fluidPage(
       selectInput(inputId = "y", 
                   label = "Y-axis:",
                   choices = colnames(dataSource), 
-                  selected = "L90f1"),
+                  selected = "L90dBA"),
       
       # Select variable for x-axis
       selectInput(inputId = "x", 
                   label = "X-axis:",
                   choices = colnames(dataSource), 
-                  selected = "siteID"),  
+                  selected = "Barren5km"),  
       
       # Select variable for x-axis
       selectInput(inputId = "z", 
                   label = "Color by:",
                   choices = colnames(dataSource), 
-                  selected = "LCLUCI"),
+                  selected = "LCLUCI.labels"),
       
       # Built with Shiny by RStudio
       br(),br(),    # Two line breaks for visual separation
@@ -50,7 +50,7 @@ ui <- fluidPage(
     # Outputs
     mainPanel(
      
-        
+        h4("Click and drag to highlight points of interest"),
         plotOutput(outputId = "scatterplot", brush = "plot_brush"),
         textOutput(outputId = "correlation"),
         dataTableOutput(outputId = "table"))
