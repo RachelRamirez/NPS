@@ -21,8 +21,8 @@ myparacoords <- function(dataSource){
   ,mode = "queue"
   ,rate = 1
 # ,autoresize = TRUE
-  ,width = 1200
-  ,height = 800
+  ,width = 1500
+  ,height = 700
   ,brushMode = "1d-axes"
   ,color = list(colorScale = htmlwidgets::JS('d3.scale.category10()'),
                   colorBy = "LCLUCI.labels")
@@ -34,13 +34,9 @@ myparacoords <- function(dataSource){
 
 
 
+myparacoords(cleandata[, c("LCLUCI.labels","Developed200m",	 "RecCon5km",	 "DistCoast", "WaterOnly200m",	"DistHighAirports", "DistModerateAirports", 	"DistRoadsMajor",	"RddMajorPt", "park", "L90f1", "L90f3", "L90f5", "L90dBA")])
 
 
-
-# # 
-# myparacoords(cleandata[, c("LCLUCI.labels", "HIHerbaceous200m",	 "RecCon5km",	 	"DistHeliports",	 	"DistRoadsMajor",	"FlightFreq25Mile",	"RddMajorPt","PopDensity_2010_50km", "park")])
-# 
-# 
 
 
 # 

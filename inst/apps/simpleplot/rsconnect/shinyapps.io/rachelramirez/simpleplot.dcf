@@ -5,8 +5,8 @@ account: rachelramirez
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 269383
-bundleId: 1245056
+bundleId: 1253707
 url: https://rachelramirez.shinyapps.io/simpleplot/
-when: 1519829596.97554
+when: 1520278461.97405
 asMultiple: FALSE
 asStatic: FALSE
