@@ -69,8 +69,40 @@ ui <- fluidPage(
                 dataTableOutput(outputId = "table")),
     
     tabPanel(title ="Map",
-             br()
-          #   dataTableOutput(outputId = "map")
+             br(),
+             
+             # Select location of map  >>                       input$Location
+             selectInput(inputId = "Location", 
+                         label = "Location:",
+                         choices = c("US"),
+                         selected = "US"),
+             
+             #Select map type >>                                 input$MapType
+             selectInput(inputId = "MapType", 
+                         label = "Map Type:",
+                         choices = c("terrain", "terrain-background", "satellite",
+                                    "roadmap", "hybrid", "toner", "watercolor", "terrain-labels", "terrain-lines", "toner-2010", "toner-2011", "toner-background", "toner-hybrid", "toner-labels", "toner-lines", "toner-lite"),
+                         selected = "toner-labels"),
+             
+             # Select Map Zoom >>                                  input$Zoom
+             h3("Zoom In/Out"),
+             h4("10 = City, 3 = Continent, 21 = Building" ),
+             sliderInput(inputId = "Zoom", 
+                         label = "Zoom Level:",
+                         min = 3,
+                         max = 21,
+                         value = 10,
+                         step = 1),
+             
+             #Select map type >>                                 input$MapType
+             selectInput(inputId = "Source", 
+                         label = "Map Source:",
+                         choices = c("google", "osm", "statem", "cloudmade"),
+             selected = "statem"),
+             
+             
+             
+             plotOutput(outputId = "map")
           ),
     
         

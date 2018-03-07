@@ -11,7 +11,7 @@
 #'\item{latitude}{is a latitude}
 #'\item{longitude}{is a longitude}
 #'}
-#'@importFrom ggmap get_map, ggmap
+#'@import ggmap 
 
  
 
@@ -37,15 +37,28 @@
 
 
 
+#spatialData(brushedPoints(rv$Data, input$plot_brush), input$Location, input$MapType, input$Zoom)
 
-spatialData <- function(data) {
+spatialData <- function(data, cooldata, Location, MapType, Zoom) {
   
-  location <- c(lon = data$Longitude[1], lat = data$Latitude[1])
-  map_1 <- get_map(location, zoom = "auto", maptype = "hybrid", scale = "auto")
+  #find out how many unique parks - need to put all of them in the picture
+  #or maybe just take everything and layover the BRUSHED POINTs in a different color?
   
   
-  ggmap::ggmap(map_1) +
-    geom_point(aes(x = Longitude, y = Latitude), data = data)
+  Location1 <- c(lon = cooldata$Longitude[1], lat = cooldata$Latitude[1])
+  
+  map_1 <- get_map(location = Location1, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
+  
+  data$lon <- data$Longitude
+  data$lat <- data$Latitude 
+  
+  
+  cooldata$lon <- cooldata$Longitude
+  cooldata$lat <- cooldata$Latitude 
+  
+  ggmap::ggmap(map_1,
+               base_layer = ggplot(data, aes(lon, lat))) + 
+   geom_point(cooldata, aes(lon, lat, color = "red") )
 
 }
 
