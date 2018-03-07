@@ -45,7 +45,13 @@ server <- function(input, output, session) {
     withMathJax(HTML(markdown::markdownToHTML(knitr::knit(file))))
   })
   
- 
+  # output$codebook  <- renderDataTable({
+  #   
+  #   file = 'codebook.Rmd'
+  #   withMathJax(HTML(markdown::markdownToHTML(knitr::knit(file))))
+  # })
+  
+  
   
   
 }

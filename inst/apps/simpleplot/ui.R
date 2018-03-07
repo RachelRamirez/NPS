@@ -66,16 +66,25 @@ ui <- fluidPage(
         
         tabPanel(title ="Data",
                  br(),
-                dataTableOutput(outputId = "table"))
+                dataTableOutput(outputId = "table")),
+    
+    tabPanel(title ="Map",
+             br()
+          #   dataTableOutput(outputId = "map")
+          ),
+    
         
-        # tabPanel("Codebook", 
-        #          br(),
-        #          uiOutput(outputId = "instructions"))
+        tabPanel("Codebook",
+                 br()
+                 ),
+    
+        #          uiOutput(outputId = "codebook")
+    
+    
+    tabPanel("Acknowledgements",
+             br())
+    #          uiOutput(outputId = "codebook")
     )
-    
     )
-    
-    
-    
   )
 )
