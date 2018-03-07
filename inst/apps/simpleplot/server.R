@@ -67,13 +67,11 @@ server <- function(input, output, session) {
     
    # spatialData(rv$Data, Location = input$Location, MapType= input$MapType, Zoom = input$Zoom)
    
-    spatialData <- function(data, coolrows,MapType, Zoom) {
-    #   
-    #   #find out how many unique parks - need to put all of them in the picture
+    spatialData <- function(data, coolrows, MapType, Zoom) {
+    #  #find out how many unique parks - need to put all of them in the picture
     #   #or maybe just take everything and layover the BRUSHED POINTs in a different color?
     #   
       
-     
       data$lon <- data$Longitude
       data$lat <- data$Latitude 
       
@@ -84,13 +82,13 @@ server <- function(input, output, session) {
       
       Location1 <- c(lon = data$lon[1], lat = data$lat[1])
       
-      map_1 <- get_map(location = Location1, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
+      map_1 <- get_map(location = "USA", maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
       
       
       
       ggmap::ggmap(map_1,
                    base_layer = ggplot(data, aes(lon, lat))) + 
-        geom_point(data[cooldata,], aes(lon, lat, color = "red") )
+        geom_point()
     
     # 
      }
