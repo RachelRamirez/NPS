@@ -1,6 +1,7 @@
 
 # Define UI for application that plots features of movies
 ui <- fluidPage(
+  theme=shinytheme("flatly"),  
   
   
   # App title
@@ -10,32 +11,32 @@ ui <- fluidPage(
   sidebarLayout(
     
     # Inputs
-    sidebarPanel(
+    sidebarPanel(width = 3,
       
       
       # Select data
       selectInput(inputId = "Data", 
                   label = "Data:",
                   choices = c("original", "cleaned"), 
-                  selected = "original"),
+                  selected = "cleaned"),
       
       
       # Select variable for y-axis
       selectInput(inputId = "y", 
                   label = "Y-axis:",
-                  choices = colnames(dataSource), 
+                  choices = colnames(dataSource),
                   selected = "L90dBA"),
       
       # Select variable for x-axis
       selectInput(inputId = "x", 
                   label = "X-axis:",
-                  choices = colnames(dataSource), 
+                  choices = colnames(dataSource),
                   selected = "Barren5km"),  
       
       # Select variable for x-axis
       selectInput(inputId = "z", 
                   label = "Color by:",
-                  choices = colnames(dataSource), 
+                  choices = c("LCLUCI.labels","Season","Elevation","L90dBA"),
                   selected = "LCLUCI.labels"),
       
       # Built with Shiny by RStudio
@@ -48,17 +49,33 @@ ui <- fluidPage(
     ),
     
     # Outputs
-    mainPanel(
+    mainPanel(width = 9,
      
+     tabsetPanel(id = "tabspanel", type = "tabs",
+                  
+    tabPanel(title = "Instructions",                   
+             uiOutput(outputId = "instructions")),
+                  
+        tabPanel(title = "Plot",                   
+                 
         h4("Click and drag to highlight points of interest"),
+        
         plotOutput(outputId = "scatterplot", brush = "plot_brush"),
-        textOutput(outputId = "correlation"),
-        dataTableOutput(outputId = "table"))
-    
+        
+        textOutput(outputId = "correlation")),
+        
+        tabPanel(title ="Data",
+                 br(),
+                dataTableOutput(outputId = "table"))
+        
+        # tabPanel("Codebook", 
+        #          br(),
+        #          uiOutput(outputId = "instructions"))
+    )
     
     )
     
     
     
   )
-
+)
