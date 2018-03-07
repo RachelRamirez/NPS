@@ -4,12 +4,12 @@
 \name{cleandata}
 \alias{cleandata}
 \title{Description of NPS data}
-\format{a \code{tibble} 
+\format{a \code{data frame} 
 
 \describe{
 \item{this}{this}
 \item{this}{that}
 }}
 \description{
-A dataset containing...
+A dataset imputing values for the original NPS data
 }

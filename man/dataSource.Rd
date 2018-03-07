@@ -4,7 +4,7 @@
 \name{dataSource}
 \alias{dataSource}
 \title{Description of NPS data}
-\format{a \code{tibble} 
+\format{a \code{data frame} 
 
 \describe{
 \item{this}{this}
@@ -14,6 +14,6 @@
 dataSource
 }
 \description{
-A dataset containing...
+A dataset containing the original NPS data
 }
 \keyword{datasets}

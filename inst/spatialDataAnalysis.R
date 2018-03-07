@@ -1,3 +1,22 @@
+#'@title Description of spatialDataAnalysis
+#'
+#'@description
+#'A function to take a latitude and longitude of selected site and display using ggmap
+#'
+#'@docType function
+#'@name spatialDataAnalysis
+#'@format a \code{function} 
+#'
+#'\describe{
+#'\item{latitude}{is a latitude}
+#'\item{longitude}{is a longitude}
+#'}
+#'
+#'@references ggmap
+ 
+
+library(ggmap)
+
 # #the start of my exploring the philippines dataset by rasters
 # 
 # dataSource <- readRDS(file = './data/cleandata')
@@ -15,7 +34,12 @@
 # 
 # #philippines <- readRDS(file = 'philippinesR')
 # location <- c(lon = philippines$Longitude[1], lat =  philippines$Latitude[1])
-# map_5 <- get_map(location, zoom = 5, scale = 1)
+
+
+
+
+location <- c(lon = $Longitude[1], lat = $Latitude[1])
+map_5 <- ggmap::get_map(location, zoom = 5, scale = 1)
 # 
 # map_13 <- get_map(location, zoom = 13, scale = 1)
 # 

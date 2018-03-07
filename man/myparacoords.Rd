@@ -2,13 +2,13 @@
 % Please edit documentation in R/my_paracoords.R
 \name{myparacoords}
 \alias{myparacoords}
-\title{This is my title}
+\title{Parallel Coordinate Plot}
 \usage{
 myparacoords(dataSource)
 }
 \arguments{
-\item{dataSource}{A data.frame}
+\item{dataSource}{A data.frame with a column called "LCLUCI.labels"}
 }
 \description{
-This is my description
+uses timelyportfolio's github function for a parallel coordinate plots
 }
