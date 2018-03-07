@@ -51,7 +51,8 @@ server <- function(input, output, session) {
   #   withMathJax(HTML(markdown::markdownToHTML(knitr::knit(file))))
   # })
   
-  
+  output$map  <- renderPlot({
+    spatialData(brushedPoints(rv$Data, input$plot_brush))})
   
   
 }
