@@ -1,12 +1,12 @@
-#'@title This is my title
-#'@description This is my description
+#'@title Parallel Coordinate Plot
+#'@description uses timelyportfolio's github function for a parallel coordinate plots
 #'@import shiny
 #'@import tidyverse
 #'@importFrom dplyr mutate
 #'@import magrittr
 #'@importFrom htmlwidgets JS
 #'
-#'@param dataSource A data.frame
+#'@param dataSource A data.frame with a column called "LCLUCI.labels"
 #'
 #'@export
 #' 
