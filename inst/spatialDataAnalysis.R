@@ -11,11 +11,11 @@
 #'\item{latitude}{is a latitude}
 #'\item{longitude}{is a longitude}
 #'}
-#'
-#'@references ggmap
+#'@importFrom ggmap get_map, ggmap
+
  
 
-library(ggmap)
+#library(ggmap)
 
 # #the start of my exploring the philippines dataset by rasters
 # 
@@ -38,8 +38,17 @@ library(ggmap)
 
 
 
-location <- c(lon = $Longitude[1], lat = $Latitude[1])
-map_5 <- ggmap::get_map(location, zoom = 5, scale = 1)
+spatialData <- function(data) {
+  
+  location <- c(lon = data$Longitude[1], lat = data$Latitude[1])
+  map_1 <- get_map(location, zoom = "auto", maptype = "hybrid", scale = "auto")
+  
+  
+  ggmap::ggmap(map_1) +
+    geom_point(aes(x = Longitude, y = Latitude), data = data)
+
+}
+
 # 
 # map_13 <- get_map(location, zoom = 13, scale = 1)
 # 
