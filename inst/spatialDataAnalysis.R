@@ -1,7 +1,7 @@
-#'@title Description of spatialDataAnalysis
+#'@title spatialData function
 #'
 #'@description
-#'A function to take a latitude and longitude of selected site and display using ggmap
+#'A function to take a latitude and longitude of selected sites and display using ggmap
 #'
 #'@docType function
 #'@name spatialDataAnalysis
@@ -12,57 +12,31 @@
 #'\item{longitude}{is a longitude}
 #'}
 #'@import ggmap 
-
  
-
-#library(ggmap)
-
-# #the start of my exploring the philippines dataset by rasters
-# 
-# dataSource <- readRDS(file = './data/cleandata')
-# # library(readxl)
-# # philippines <- read_excel("~/AFIT Masters OR Program/Thesis/philippines/philippines/phillipine_withData2.xlsx",    range = "B1:AR9", col_types = c("text",  "numeric",  "numeric",  "text", "skip", "skip", "numeric",  "numeric", "skip", "skip", "skip", "skip" , rep("numeric", 31)))
-# # philippines <- as.data.frame(philippines)
-# # #I dont know if the roads collected from ArcGIS were "Major Roads" or "Any Roads" so to predict I try out both
-# # philippines$DistRoadsAll <- philippines$DistNationalRoads/1000
-# # philippines$DistRoadsMajor <- philippines$DistNationalRoads/1000
-# # philippines$DistanceToNearestAirport <- philippines$DistanceToNearestAirport/1000
-# # saveRDS(philippines, file = 'philippinesR')
-# 
-# philippines$lon = philippines$Longitude
-# philippines$lat = philippines$Latitude
-# 
-# #philippines <- readRDS(file = 'philippinesR')
-# location <- c(lon = philippines$Longitude[1], lat =  philippines$Latitude[1])
-
-
 
 #spatialData(brushedPoints(rv$Data, input$plot_brush), input$Location, input$MapType, input$Zoom)
 
-spatialData <- function(data, cooldata, Location, MapType, Zoom) {
+spatialData <- function(data,  MapType, Zoom) {
   
   #find out how many unique parks - need to put all of them in the picture
   #or maybe just take everything and layover the BRUSHED POINTs in a different color?
+  # n <- row(data)
+  # cat("There are ", n, " selected points. The first will be mapped.")
+  location = c(lon = data$Longitude[1], lat = data$Latitude[1])
+  
+  map_1 <- get_map(messaging = TRUE, location, maptype = MapType, zoom = Zoom, source = ifelse(MapType == c("toner"), "stamen", "google"))
   
   
-  Location1 <- c(lon = cooldata$Longitude[1], lat = cooldata$Latitude[1])
   
-  map_1 <- get_map(location = Location1, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
-  
-  data$lon <- data$Longitude
-  data$lat <- data$Latitude 
-  
-  
-  cooldata$lon <- cooldata$Longitude
-  cooldata$lat <- cooldata$Latitude 
-  
-  ggmap::ggmap(map_1,
+  ggmap::ggmap(map_1, 
                base_layer = ggplot(data, aes(lon, lat))) + 
-   geom_point(cooldata, aes(lon, lat, color = "red") )
+    geom_point()
+  
+ 
+ 
+  }
 
-}
-
-# 
+#  
 # map_13 <- get_map(location, zoom = 13, scale = 1)
 # 
 # #corvallis <- c(lon = -123.2620, lat = 44.5646)
@@ -79,3 +53,10 @@ spatialData <- function(data, cooldata, Location, MapType, Zoom) {
 # # Map color to price / finished_squarefeet
 # ggmap(corvallis_map) +
 #   geom_point(aes(lon, lat), data = sales)
+
+# 
+# # Use base_layer argument to ggmap() and add facet_wrap()
+# ggmap(corvallis_map_bw, 
+#       base_layer= ggplot(sales, aes(lon,lat))) + 
+#   geom_point(aes(color = class)) +
+#   facet_wrap(facets = ~class)

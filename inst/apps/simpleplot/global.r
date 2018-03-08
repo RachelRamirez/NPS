@@ -14,14 +14,15 @@ library(ggmap)
 #library(choroplethrMaps)
 #library(readxl)
 #dataSource <- read_excel("..\\dataSource.xlsx", sheet = "CONUS Data", range = "c3:iq514")
-
 #devtools::use_data(dataSource, overwrite = TRUE)
 
 myenv <- new.env()
 
 data('dataSource', envir = myenv)
-# data('cleandata')
+data('cleandata', envir = myenv)
+
 dataSource <- as.data.frame(get('dataSource', envir = myenv))
+cleandata <- as.data.frame(get('cleandata', envir = myenv))
 
    dataSource$LCLUCI.labels <-
    factor(
@@ -122,8 +123,43 @@ dataSource <- as.data.frame(get('dataSource', envir = myenv))
                )
    )
  # 
- # 
- # 
- # 
+ #'@title spatialData function
+ #'
+ #'@description
+ #'A function to take a latitude and longitude of selected sites and display using ggmap
+ #'
+ #'@docType function
+ #'@name spatialDataAnalysis
+ #'@format a \code{function} 
+ #'
+ #'\describe{
+ #'\item{latitude}{is a latitude}
+ #'\item{longitude}{is a longitude}
+ #'}
+ #'@import ggmap 
+ 
+ 
+ #spatialData(brushedPoints(rv$Data, input$plot_brush), input$Location, input$MapType, input$Zoom)
+ # spatialData(data = rv$Data, selected= input$plot_brush, maptype = input$MapType, zoom = input$Zoom)
+ 
+ spatialData <- function(data, MapType, Zoom) {
+   data <- dataSource
+   data <- data[1,]
+   #find out how many unique parks - need to put all of them in the picture
+   #or maybe just take everything and layover the BRUSHED POINTs in a different color?
+     location = c(lon = data$Longitude, lat = data$Latitude)
+   
+   map_1 <- get_map(location, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
+   
+   
+   
+   ggmap::ggmap(map_1, 
+                base_layer = ggplot(data, aes(x = Longitude, y = Latitude))) + 
+     geom_point()
+   
+   
+   
+ }
+ 
  # 
  # 
