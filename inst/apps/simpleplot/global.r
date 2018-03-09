@@ -164,15 +164,17 @@ data('cleandata')
     #  location = c(lon = data2$Longitude, lat = data2$Latitude)
      
      
-   print(location)
-   map_1 <- get_map(location, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
+   # print(location)
+   map_1 <- get_map(location = location, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
    
    
    ggmap::ggmap(map_1, 
-        base_layer = ggplot(data= as.data.frame(data), aes(x = Longitude, y = Latitude))) + 
-     geom_point(aes(color =LCLUCI.labels))
-    
+        base_layer = ggplot(as.data.frame(data[1,]), aes(x = Longitude, y = Latitude, color = LCLUCI.labels))) + 
+     geom_point(as.data.frame(data), aes(color = LCLUCI.labels)) + 
+     # geom_point() + 
+     facet_wrap(facets = ~LCLUCI.labels)
     }
  
  # 
  # 
+ 
