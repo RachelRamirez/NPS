@@ -67,7 +67,7 @@ server <- function(input, output, session) {
   })
   
   output$parcoors <- renderPlot({
-    myparacoords(data  = rv$Data)
+    myparacoords(data  = rv$Data[, c("LCLUCI.labels",	 "RecCon5km",	 "DistCoast", "WaterOnly200m", "DistModerateAirports", 	"DistRoadsMajor",	"RddMajorPt", "park",  "L90dBA")])
   })
   
 }

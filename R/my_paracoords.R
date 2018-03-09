@@ -20,9 +20,9 @@ myparacoords <- function(dataSource){
   ,axisDots = 0
   ,mode = "queue"
   ,rate = 1
- ,autoresize = TRUE
-  ,width = 500
-  ,height = 300
+ ,autoresize = FALSE
+  ,width = 250
+  ,height = 100
   ,brushMode = "1d-axes"
   ,color = list(colorScale = htmlwidgets::JS('d3.scale.category10()'),
                   colorBy = "LCLUCI.labels")

@@ -10,7 +10,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-library(ggplot2)
+# library(ggplot2)
 library(NPS)
 
 
@@ -34,11 +34,11 @@ Here are two plots side by side of the original versus "cleaned" data using impu
 
 ```{r, fig.show='hold', fig.cap = "Original versus Cleaned Data"}
  
-ggplot(dataSource, aes(x= (park), y = Wind_CRU)) +
- geom_point() + coord_flip()
-
-ggplot(cleandata, aes(x= park, y = Wind_CRU)) + 
-  geom_point() + coord_flip()
+# ggplot(dataSource, aes(x= (park), y = Wind_CRU)) +
+#  geom_point() + coord_flip()
+# 
+# ggplot(cleandata, aes(x= park, y = Wind_CRU)) + 
+#   geom_point() + coord_flip()
 ```
  
 

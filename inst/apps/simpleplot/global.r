@@ -16,13 +16,24 @@ library(ggmap)
 #dataSource <- read_excel("..\\dataSource.xlsx", sheet = "CONUS Data", range = "c3:iq514")
 #devtools::use_data(dataSource, overwrite = TRUE)
 
-myenv <- new.env()
+# myenv <- new.env()
+# 
+# data('dataSource', envir = myenv)
+# data('cleandata', envir = myenv)
 
-data('dataSource', envir = myenv)
-data('cleandata', envir = myenv)
+# 
+data('dataSource')
+data('cleandata')
 
-dataSource <- as.data.frame(get('dataSource', envir = myenv))
-cleandata <- as.data.frame(get('cleandata', envir = myenv))
+#May be needed from Maj Freels
+# dataSource <- as.data.frame(get('dataSource', envir = myenv))
+# cleandata <- as.data.frame(get('cleandata', envir = myenv))
+
+
+dataSource <- as.data.frame(get('dataSource'))
+cleandata <- as.data.frame(get('cleandata'))
+
+
 
    dataSource$LCLUCI.labels <-
    factor(
@@ -143,8 +154,7 @@ cleandata <- as.data.frame(get('cleandata', envir = myenv))
  # spatialData(data = rv$Data, selected= input$plot_brush, maptype = input$MapType, zoom = input$Zoom)
  
  spatialData <- function(data, MapType, Zoom) {
-   data <- dataSource
-   data <- data[1,]
+    data <- data[1,]
    #find out how many unique parks - need to put all of them in the picture
    #or maybe just take everything and layover the BRUSHED POINTs in a different color?
      location = c(lon = data$Longitude, lat = data$Latitude)

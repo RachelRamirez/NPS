@@ -12,8 +12,7 @@
 #'\item{this}{that}
 #'}
 #'
-NULL
-
+'cleandata'
 
 
 #'@title Description of NPS data
