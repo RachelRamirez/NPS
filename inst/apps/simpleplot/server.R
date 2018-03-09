@@ -55,7 +55,7 @@ server <- function(input, output, session) {
     
     #Last Working Version:
     # spatialData(data = rv$Data, selected= input$plot_brush, input$MapType, input$Zoom)
-    spatialData(data = rv$Data, input$MapType, input$Zoom)
+    spatialData(data = brushedPoints(rv$Data, input$plot_brush), as.character(input$MapType), input$Zoom)
     
     #Current Trials and Tribulations
     #tells the spatialData function what is the relevatn reactuve Data (rv$data)
@@ -66,21 +66,11 @@ server <- function(input, output, session) {
  
   })
   
-  output$parcoors <- renderPlot({
-    myparacoords(data  = rv$Data[, c("LCLUCI.labels",	 "RecCon5km",	 "DistCoast", "WaterOnly200m", "DistModerateAirports", 	"DistRoadsMajor",	"RddMajorPt", "park",  "L90dBA")])
+  output$parcoors <- parcoords::renderParcoords({
+    myparacoords(dataSource = rv$Data)
   })
   
 }
-
-
-
-
-
-
-
-
-   
-# 
 #  #from datacamp woith Charlotte Wickham
 # corvallis <- c(lon = -123.2620, lat = 44.5646)
 # 

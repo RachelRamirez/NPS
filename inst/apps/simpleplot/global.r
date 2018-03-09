@@ -10,6 +10,7 @@ library(shiny)
 library(shinythemes)
 library(NPS)
 library(ggmap)
+library(parcoords)
 #library(choroplethr)
 #library(choroplethrMaps)
 #library(readxl)
@@ -25,13 +26,11 @@ library(ggmap)
 data('dataSource')
 data('cleandata')
 
-#May be needed from Maj Freels
+#May be needed--from Maj Freels
 # dataSource <- as.data.frame(get('dataSource', envir = myenv))
 # cleandata <- as.data.frame(get('cleandata', envir = myenv))
-
-
-dataSource <- as.data.frame(get('dataSource'))
-cleandata <- as.data.frame(get('cleandata'))
+# dataSource <- as.data.frame(('dataSource'))
+# cleandata <- as.data.frame(('cleandata'))
 
 
 
@@ -154,22 +153,26 @@ cleandata <- as.data.frame(get('cleandata'))
  # spatialData(data = rv$Data, selected= input$plot_brush, maptype = input$MapType, zoom = input$Zoom)
  
  spatialData <- function(data, MapType, Zoom) {
-    data <- data[1,]
-   #find out how many unique parks - need to put all of them in the picture
-   #or maybe just take everything and layover the BRUSHED POINTs in a different color?
-     location = c(lon = data$Longitude, lat = data$Latitude)
+   #  
+   # #Take the first row of data to center on or
+   # data2 <- data[1,]
    
+   #Center the map around ______ 
+    location = "Omaha, NE"
+   
+    # #Would like to eventually make all the  BRUSHED POINTs in a different color
+    #  location = c(lon = data2$Longitude, lat = data2$Latitude)
+     
+     
+   print(location)
    map_1 <- get_map(location, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
    
    
-   
    ggmap::ggmap(map_1, 
-                base_layer = ggplot(data, aes(x = Longitude, y = Latitude))) + 
-     geom_point()
-   
-   
-   
- }
+        base_layer = ggplot(data= as.data.frame(data), aes(x = Longitude, y = Latitude))) + 
+     geom_point(aes(color =LCLUCI.labels))
+    
+    }
  
  # 
  # 

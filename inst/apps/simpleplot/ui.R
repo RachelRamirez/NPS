@@ -72,26 +72,28 @@ ui <- fluidPage(
              #Select map type >>                                 input$MapType
              selectInput(inputId = "MapType", 
                          label = "Map Type:",
-                         choices = c("terrain",  "satellite", "roadmap", "hybrid", "toner", "watercolor"),
+                         choices =  c("terrain", "terrain-background", "satellite",
+                                      "roadmap", "hybrid", "toner", "watercolor", "terrain-labels", "terrain-lines",
+                                      "toner-2010", "toner-2011", "toner-background", "toner-hybrid",
+                                      "toner-labels", "toner-lines", "toner-lite"),
                          selected = "hybrid"),
              
              # Select Map Zoom >>                                  input$Zoom
-             h3("Zoom In/Out"), h5("this may take a while"),
-             h4("3 = Continent, 10 = City, 21 = Building" ),
+              h4("3 = Continent, 10 = City, 21 = Building" ),
              sliderInput(inputId = "Zoom", 
-                         label = "Zoom Level:",
+                         label = "Zoom Level:  3 = Continent, 21 = Building",
                          min = 3,
                          max = 21,
-                         value = 10,
+                         value = 11,
                          step = 1),
              
-             #Select map type >>                                 input$MapType
-             h5("osm = open street map, statem = just for toner maps"),
-             selectInput(inputId = "Source", 
-                         label = "Map Source:",
-                         choices = c("google", "osm", "statem"),
-             selected = "google"),
-             
+          #    #Select map type >>                                 input$MapType
+          #    h5("osm = open street map, statem = just for toner maps"),
+          #    selectInput(inputId = "Source", 
+          #                label = "Map Source:",
+          #                choices = c("google", "osm", "statem"),
+          #    selected = "google"),
+
              plotOutput(outputId = "map")
           ),
     
@@ -103,8 +105,4 @@ ui <- fluidPage(
 
          tabPanel("Parallel Plot", 
               h3("Parallel Coorinate Plots enable one to see high dimensional data at once"),
-              plotOutput(outputId = "parcoors")
-               )
-  )
-)
-))
+              parcoords::parcoordsOutput(outputId = "parcoors", width = "100%", height = "80%"))))))
