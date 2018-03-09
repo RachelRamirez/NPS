@@ -55,7 +55,7 @@ server <- function(input, output, session) {
     
     #Last Working Version:
     # spatialData(data = rv$Data, selected= input$plot_brush, input$MapType, input$Zoom)
-    spatialData(data = brushedPoints(rv$Data, input$plot_brush), as.character(input$MapType), input$Zoom)
+    spatialData(data = rv$Data, as.character(input$MapType), input$Zoom)
     
     #Current Trials and Tribulations
     #tells the spatialData function what is the relevatn reactuve Data (rv$data)
@@ -67,8 +67,27 @@ server <- function(input, output, session) {
   })
   
   output$parcoors <- parcoords::renderParcoords({
-    myparacoords(dataSource = rv$Data)
-  })
+    
+    
+    #myparacoords(dataSource = rv$Data[, c("LCLUCI.labels", "WaterOnly200m", "DistHeliports", "L90dBA")])
+    parcoords::parcoords(
+      rv$Data[,c( "park.labels",  input$y, input$x, input$z)]
+    
+      ,reorderable = T
+      ,rownames = FALSE
+      ,alpha=0.5
+      ,axisDots = 0
+      ,mode = "queue"
+      ,rate = 1
+      ,autoresize = TRUE
+      ,width = 900
+      ,height = 700
+      ,brushMode = "1d-axes"
+      ,color = list(colorScale = htmlwidgets::JS('d3.scale.category10()'),
+                    colorBy = input$z )
+      
+    )  
+    })
   
 }
 #  #from datacamp woith Charlotte Wickham

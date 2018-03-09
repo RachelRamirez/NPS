@@ -152,27 +152,39 @@ data('cleandata')
  #spatialData(brushedPoints(rv$Data, input$plot_brush), input$Location, input$MapType, input$Zoom)
  # spatialData(data = rv$Data, selected= input$plot_brush, maptype = input$MapType, zoom = input$Zoom)
  
- spatialData <- function(data, MapType, Zoom) {
-   #  
-   # #Take the first row of data to center on or
-   # data2 <- data[1,]
-   
+ spatialData <- function(data, MapType, Zoom, brushed = 1) {
+ 
+      # #Take the first row of data to center on or
+     data2 <- data[1,]
+     
+     data3 <- data[brushed,]
+     
    #Center the map around ______ 
-    location = "Omaha, NE"
+    location = "US"
    
     # #Would like to eventually make all the  BRUSHED POINTs in a different color
-    #  location = c(lon = data2$Longitude, lat = data2$Latitude)
-     
+       # location = c(lon = data2$Longitude, lat = data2$Latitude)
+       # 
      
    # print(location)
    map_1 <- get_map(location = location, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
    
    
    ggmap::ggmap(map_1, 
-        base_layer = ggplot(as.data.frame(data[1,]), aes(x = Longitude, y = Latitude, color = LCLUCI.labels))) + 
-     geom_point(as.data.frame(data), aes(color = LCLUCI.labels)) + 
+        base_layer = ggplot(data, aes(x = Longitude, y = Latitude))) + 
+     geom_point(data = data, aes(color = LCLUCI.labels, size = L90dBA),  alpha = 0.8) + 
+     geom_jitter() # + 
      # geom_point() + 
-     facet_wrap(facets = ~LCLUCI.labels)
+     #facet_wrap(facets = ~LCLUCI.labels) 
+     
+   
+   ggmap::ggmap(map_1, 
+                base_layer = ggplot(data, aes(x = Longitude, y = Latitude))) + 
+     geom_point(aes(color = LCLUCI.labels, size = L90dBA),  alpha = 0.8) + 
+     geom_jitter() # + 
+   # geom_point() + 
+   #facet_wrap(facets = ~LCLUCI.labels) 
+   
     }
  
  # 

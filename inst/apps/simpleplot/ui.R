@@ -68,15 +68,12 @@ ui <- fluidPage(
     
         tabPanel(title ="Map",
              br(),
-             h4("Based on the points you've chosen in the plot:"),
+             h4("Overview of Data:"),
              #Select map type >>                                 input$MapType
              selectInput(inputId = "MapType", 
                          label = "Map Type:",
-                         choices =  c("terrain", "terrain-background", "satellite",
-                                      "roadmap", "hybrid", "toner", "watercolor", "terrain-labels", "terrain-lines",
-                                      "toner-2010", "toner-2011", "toner-background", "toner-hybrid",
-                                      "toner-labels", "toner-lines", "toner-lite"),
-                         selected = "hybrid"),
+                         choices =  c("terrain",                                        "roadmap", "hybrid", "toner", "watercolor",  "toner-lite"),
+                         selected = "toner-lite"),
              
              # Select Map Zoom >>                                  input$Zoom
               h4("3 = Continent, 10 = City, 21 = Building" ),
@@ -84,8 +81,8 @@ ui <- fluidPage(
                          label = "Zoom Level:  3 = Continent, 21 = Building",
                          min = 3,
                          max = 21,
-                         value = 11,
-                         step = 1),
+                         value = 3,
+                         step = 2),
              
           #    #Select map type >>                                 input$MapType
           #    h5("osm = open street map, statem = just for toner maps"),
@@ -104,5 +101,8 @@ ui <- fluidPage(
         # ),
 
          tabPanel("Parallel Plot", 
-              h3("Parallel Coorinate Plots enable one to see high dimensional data at once"),
-              parcoords::parcoordsOutput(outputId = "parcoors", width = "100%", height = "80%"))))))
+              h3("Parallel Coorinate Plots enable one to see highly dimensional data"),
+              h5("Change the inputs to the left to see differet axes on the parallel coordinate plot below"),
+              parcoords::parcoordsOutput(outputId = "parcoors")))))
+  
+  )
