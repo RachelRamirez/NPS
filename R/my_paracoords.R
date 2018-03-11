@@ -9,8 +9,8 @@
 #'@param dataSource A data.frame with a column called "LCLUCI.labels"
 #'
 #'@export
-#' 
-#' 
+#'@examples \dontrun{myparacoords(cleandata[, c("LCLUCI.labels","Developed200m",	 "RecCon5km",	 "DistCoast", "WaterOnly200m",	"DistHighAirports", "DistModerateAirports", 	"DistRoadsMajor",	"RddMajorPt", "park", "L90f1", "L90f3", "L90f5", "L90dBA")])}
+#'
 myparacoords <- function(dataSource){
   parcoords::parcoords(
   dataSource,

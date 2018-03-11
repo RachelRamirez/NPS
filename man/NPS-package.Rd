@@ -3,32 +3,27 @@
 \alias{NPS}
 \docType{package}
 \title{
-  A short title line describing what the package does
+  visualize national park service acoustic data
 }
 \description{
-  A more detailed description of what the package does. A length
-  of about one to five lines is recommended.
+  Uses interactive shiny app to look at scatterplots, maps, and parallel coordinate plots of data.
 }
 \details{
-  This section should provide a more detailed overview of how to use the
-  package, including the most important functions.
+  The most important function is run_my_app("simpleplot"), and the second most important function that is exported though not intended to be used is myparacoords which displays the parallel coordinate plots.  It is  timelyportfolio's github parcoords code, just applied to this NPS data.
 }
 \author{
-Your Name, email optional.
-
-Maintainer: Your Name <your@email.com>
+Rachel Ramirez
 }
 \references{
-  This optional section can contain literature or other references for
-  background information.
+   Pertinent background information about the National Park Service variables in both data sets are found at the Natural Resource Publications Management website (http://www.nature.nps.gov/publications/nrpm/) search for ''Explanatory variable generation for geospatial soundscape modeling: Standard operating procedure. Natural Resource Report. Natural Resource Report NPS / NRSS / NRR - 2015 / 936'' by Lisa Nelson, Michelle Kinseth, and Thomas Flowe.  A 'codebook' is in development.
 }
-\keyword{ package }
+\keyword{ NPS }
 \seealso{
-  Optional links to other man pages
+  run_my_app, my_paracoords
 }
 \examples{
   \dontrun{
-     ## Optional simple examples of the most important functions
-     ## These can be in \dontrun{} and \donttest{} blocks.   
+     ## run_my_app("simpleplot")
+    
   }
 }

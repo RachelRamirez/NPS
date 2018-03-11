@@ -12,3 +12,7 @@ myparacoords(dataSource)
 \description{
 uses timelyportfolio's github function for a parallel coordinate plots
 }
+\examples{
+\dontrun{myparacoords(cleandata[, c("LCLUCI.labels","Developed200m",	 "RecCon5km",	 "DistCoast", "WaterOnly200m",	"DistHighAirports", "DistModerateAirports", 	"DistRoadsMajor",	"RddMajorPt", "park", "L90f1", "L90f3", "L90f5", "L90dBA")])}
+
+}
