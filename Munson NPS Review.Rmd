@@ -1,0 +1,46 @@
+---
+title: "Munson NPS Review"
+author: "CPT Evan Munson"
+date: "3/12/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Accuracy
+
+* Are the results accurate?
+  + The results appear accurate.
+  + The app appears to be focused on the data exploration phase of the NPS dataset instead of focusing on a random-forest analysis (which was not completed in the initial version).
+
+* Is it clear how the results were computed?
+  + Yes, the parallel plot does a good job of displaying a large amount of information with multiple variables.
+
+# Compilation
+
+* Did the analytic work?
+  
+  + The actual package `NPS` installed without any problems.  
+  + However the package `parcoords` was not installed originally as a dependency for `NPS`.  This resulted in an error when `NPS::myparacoords(dataSource = dataSource)` was called.  However with a quick search `parcoords` was easily installed and then all functions appeared to operate correctly.
+  + My concern with the app is that it does appear to properly select data from the plot tab and carry that selection through to the map or parallel plots in shiny.  
+  + Because it does not properly select the data, the final parallel plots are too busy to actually use.  But they are very nice plots.
+  + The map did not properly load for some reason.
+
+* Were error encountered when executing code according to the documentation?
+  + When different x-axis and y-axis values were selected some of them did not work properly and resulted in an error object not found.  It may be useful to limit some of the choices for the x-axis and y-axis values to prevent this.
+  + Sadly the mapping function stopped working properly.  This option I would be very interested in seeing.
+  
+# Ease of Use
+
+ * Is it clear how to use the analytic?
+   + The analytic is very easy to use and has a very good and clean appearance to it.  The challenge to me is that I have never worked with the dataset before so some of the x-axis and y-axis values options do not mean anything to me.  However if I understood what the variable alluded to, it would be very convenient to switch between them all.
+ 
+ * Are the visualization interpretable?
+   + As mentioned earlier the Map did not work properly.
+   + The Parallel plots were very interesting and very useful.  Only challenge with them is to ensure the proper data was selected in the plot tab and have it carried to the plots.
+  
+# Overall
+
+The `NPS` package has a very easy to use and understand shiny app that will make exploring the data a breeze.  Once the data selection bug and the maps work it will be a great app.  Overall I feel the app is excellent.
