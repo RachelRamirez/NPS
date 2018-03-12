@@ -30,46 +30,32 @@ server <- function(input, output, session) {
     r <- round(cor(rv$Data[input$x], rv$Data[input$y], use = "pairwise"), 3)
     paste0("Correlation = ", r, ". Note: If the relationship between the two variables is not linear, the correlation coefficient will not be meaningful.")
   })
-  
-#   #attempt to make Data change on colnames() of UI
-#   output$DataCol <- renderTable({
-#      as.data.frame(rv$Data)
-#     })
-# }
-
-#adding the rmarkdown vignette to the tab
-  
+   
   output$instructions  <- renderUI({
     
     file = 'instructions.Rmd'
     withMathJax(HTML(markdown::markdownToHTML(knitr::knit(file))))
   })
   
+  output$codebook <- renderText({h3("Pending")})
   # output$codebook  <- renderDataTable({
   #   
   #   file = 'codebook.Rmd'
   #   withMathJax(HTML(markdown::markdownToHTML(knitr::knit(file))))
   # })
   
-  output$map  <- renderPlot({
-    
-    #Last Working Version:
-    # spatialData(data = rv$Data, selected= input$plot_brush, input$MapType, input$Zoom)
-    spatialData(data = rv$Data, as.character(input$MapType), input$Zoom)
-    
-    #Current Trials and Tribulations
-    #tells the spatialData function what is the relevatn reactuve Data (rv$data)
-    # tells the spatialData which data is Brushed (so it should be a different color, like RED)
-    # tells the spatialData where to look, kind of, its default to "US"
-    # tells the spatial data function what type of map is requested, like "watercolor" or "toner" or "satelite"
-    # tells the function how close or far we should be zoomed in
  
+  
+  output$map  <- renderPlot({   
+    spatialData(data = as.data.frame(rv$Data),  MapType = as.character(input$MapType) )
   })
   
-  output$parcoors <- parcoords::renderParcoords({
-    
-    
-    #myparacoords(dataSource = rv$Data[, c("LCLUCI.labels", "WaterOnly200m", "DistHeliports", "L90dBA")])
+  output$map2  <- renderPlot({
+    #Last Working Version:
+     spatialData(data = as.data.frame(brushedPoints(rv$Data, input$plot_brush)[c("siteID","park.labels", "Latitude","Longitude", "LCLUCI.labels", "park")]), selected = 2, MapType = as.character(input$MapType)) })
+  
+    output$parcoors <- parcoords::renderParcoords({
+#myparacoords(dataSource = rv$Data[, c("LCLUCI.labels", "WaterOnly200m", "DistHeliports", "L90dBA")])
     parcoords::parcoords(
       rv$Data[,c( "park.labels",  input$y, input$x, input$z)]
     
@@ -90,6 +76,21 @@ server <- function(input, output, session) {
     })
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #  #from datacamp woith Charlotte Wickham
 # corvallis <- c(lon = -123.2620, lat = 44.5646)
 # 

@@ -1,7 +1,7 @@
 ---
 title: "National Park Service Acoustic Dataset"
 author: "Rachel Ramirez"
-date: "2018-03-09"
+date: "2018-03-12"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{National Park Service Acoustic Dataset}
@@ -11,6 +11,9 @@ vignette: >
 
 
 The intent of the NPS package is to allow a user to explore the original National Park Service acoustic geospatial dataset and the cleaned NPS data according to assumptions/imputations.  
+
+# Choose points from the plot.
+ The first step is to look at the plot and select some data.  Then look at the points in the data table tab, or look at the points from the map tab. (this will take  a minute)   Or just look at the parallel plot.  You can reorder the order of the parallel plot axes.   You can change the axes by using the same plot tools to the left.  
 
 ## NPS Variables
 

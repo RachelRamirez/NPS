@@ -83,15 +83,16 @@
 \item{	TPI	}{	Ordinal bin of TPIRaw	}
 \item{	TPIRaw	}{	Topographic Position raw value.	}
 \item{	Wilderness	}{	Sum of designated wilderness	}
-\item{	Wind\_CRU	}{	Wind power class potential density (50m AOA)	}
-\item{ ... }{	Following Wind\_CRU there are approximately 130 measures of sound data 	}
-\item{ L90f1 }{	The first one third octave band frequency on L90 band of thirty-three 	}
-\item{ L50f1 }{	The first one third octave band frequency on L50 band of thirty-three 	}
-\item{ L10f1 }{	The first one third octave band frequency on L10 band of thirty-three 	}
-\item{ LeqdBA }{	The equivalent noise level 	}
+\item{	Wind_CRU	}{	Wind power class potential density (50m AOA)	}
+\item{ ... }{	Following Wind_CRU there are approximately 130 measures of sound data, only the first of each type are presented below	}
+\item{ L90f1 }{	The first one third octave band frequency on L90 band of thirty-three... L90f1-L90f33	}
+\item{ L50f1 }{	The first one third octave band frequency on L50 band of thirty-three... L50f1-L50f33	}
+\item{ L10f1 }{	The first one third octave band frequency on L10 band of thirty-three... L10f1-L10f33	}
+\item{ LeqdBA }{	The equivalent noise level 	in A-weighted dbs}
 \item{ Ldn }{	The day-night equivalent noise level 	}
-\item{ LeqdBAh1 }{	The first hour equivalent dBA level 	}
-}}
+\item{ LeqdBAh1 }{	The first hour equivalent  level in A-weighted dbs ... LeqdBAh1-LeqdBAh23	}
+}
+\source{More data about these  values can be found looking at the NPS description of variables from the NPS Report "Explanatory Variable Generation for Geospatial Sound Modeling" available on the Natural Resource Publications Management website (http://www.nature.nps.gov/publications/nrpm/) search for ''Explanatory variable generation for geospatial soundscape modeling: Standard operating procedure. Natural Resource Report. Natural Resource Report NPS / NRSS / NRR - 2015 / 936'' by Lisa Nelson, Michelle Kinseth, and Thomas Flowe.: \url{http://www.nature.nps.gov/publications/nrpm/} }}
 \usage{
 dataSource
 }

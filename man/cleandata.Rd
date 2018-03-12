@@ -3,12 +3,12 @@
 \docType{data}
 \name{cleandata}
 \alias{cleandata}
-\title{Description of NPS data}
+\title{Description of National Park Service (NPS) data}
 \format{a \code{data frame} 
 \describe{
 \item{siteID}{a unique alpha numeric identifier for the site.  example GOGA001 is Golden Gates Bridge Park in California, site 1}
 \item{Season}{Fall, Spring, Winter, or Summer	} 
-\item{	region	}{	All data was CONUS	}
+\item{	region	}{	All data was CONUS but more data should be added from Hawaii and Alaska	}
 \item{	park	}{	Location of site	}
 \item{	type	}{	Park or City	}
 \item{	firstYear	}{	Year recording began	}
@@ -89,11 +89,12 @@
 \item{ LeqdBA }{	The equivalent noise level 	}
 \item{ Ldn }{	The day-night equivalent noise level 	}
 \item{ LeqdBAh1 }{	The first hour equivalent dBA level 	}
-}}
+}
+#'\source{More data about the original  values can be found looking at the NPS description of variables from the NPS Report "Explanatory Variable Generation for Geospatial Sound Modeling" available on the Natural Resource Publications Management website (http://www.nature.nps.gov/publications/nrpm/) search for ''Explanatory variable generation for geospatial soundscape modeling: Standard operating procedure. Natural Resource Report. Natural Resource Report NPS / NRSS / NRR - 2015 / 936'' by Lisa Nelson, Michelle Kinseth, and Thomas Flowe.: \url{http://www.nature.nps.gov/publications/nrpm/} }}
 \usage{
 cleandata
 }
 \description{
-A dataset imputing values for the original NPS data
+A dataset with imputed values for the original NPS data (received approximately 2016)
 }
 \keyword{datasets}

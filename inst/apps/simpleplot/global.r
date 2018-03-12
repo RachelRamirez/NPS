@@ -105,7 +105,7 @@ data('cleandata')
    factor(
      cleandata$park,
      levels = c('ACAD', 'AGFO','ARCH','BADL','BAND','BITH','BLMNV','BRCA','CAHA',
-                'CALO','CANY','CEBR','CIRO', 'CITY',  ' COLM','DEPO','DETO','DEVA','DINO',
+                'CALO','CANY','CEBR','CIRO', 'CITY',  'COLM','DEPO','DETO','DEVA','DINO',
                 'ELMA','ELMO','EVER','FODO','FOLA','FORA','GLAC','GLCA','GOGA','GRBA',
                 'GRCA','GRTE','GRKO','GRSA','GRSM','GUIS','HOME','ISRO','KIMO','LAKE',
                 'LAME','LAMR','LIBI','MIMA','MOCA','MOJA','MONO','MORA','MORU','MUWO',
@@ -149,44 +149,33 @@ data('cleandata')
  #'@import ggmap 
  
  
- #spatialData(brushedPoints(rv$Data, input$plot_brush), input$Location, input$MapType, input$Zoom)
  # spatialData(data = rv$Data, selected= input$plot_brush, maptype = input$MapType, zoom = input$Zoom)
  
- spatialData <- function(data, MapType, Zoom, brushed = 1) {
+ spatialData <- function(data, MapType, Zoom = 3, selected= 1) {
+    #Default to Overview Map if nothing is selected   
+    #Center the map around ______ 
+   location = "US"
  
-      # #Take the first row of data to center on or
-     data2 <- data[1,]
-     
-     data3 <- data[brushed,]
-     
-   #Center the map around ______ 
-    location = "US"
+     map_1 <- get_map(location = location, maptype = MapType, zoom = 4, source = ifelse(MapType == "toner", "stamen", "google"))
    
-    # #Would like to eventually make all the  BRUSHED POINTs in a different color
-       # location = c(lon = data2$Longitude, lat = data2$Latitude)
-       # 
-     
-   # print(location)
-   map_1 <- get_map(location = location, maptype = MapType, zoom = Zoom, source = ifelse(MapType == "toner", "stamen", "google"))
-   
-   
-   ggmap::ggmap(map_1, 
-        base_layer = ggplot(data, aes(x = Longitude, y = Latitude))) + 
-     geom_point(data = data, aes(color = LCLUCI.labels, size = L90dBA),  alpha = 0.8) + 
-     geom_jitter() # + 
-     # geom_point() + 
-     #facet_wrap(facets = ~LCLUCI.labels) 
-     
-   
-   ggmap::ggmap(map_1, 
-                base_layer = ggplot(data, aes(x = Longitude, y = Latitude))) + 
-     geom_point(aes(color = LCLUCI.labels, size = L90dBA),  alpha = 0.8) + 
-     geom_jitter() # + 
-   # geom_point() + 
-   #facet_wrap(facets = ~LCLUCI.labels) 
-   
-    }
- 
+     if(selected ==  1){      
+      ggmap::ggmap(map_1, 
+              base_layer = ggplot(data, aes(x = Longitude, y = Latitude, label = park))) + 
+             geom_label(aes(color = LCLUCI.labels)) #+ 
+  #            geom_text(check_overlap = TRUE) 
+       }else{
+         
+        location = c(lat =   data$Latitude[1], lon = data$Longitude[1])
+         
+     map_2 <- get_map(location = location ,  maptype = MapType, zoom = "auto", scale = "auto", source = ifelse(MapType == "toner", "stamen", "google"))
+        ggmap::ggmap(map_2, extent = "device",                  
+                     base_layer = ggplot(data, aes(x = Longitude, y = Latitude, label = park))) + 
+          geom_label(aes(color = LCLUCI.labels)) + 
+        geom_text(check_overlap = TRUE)         
+        geom_point(aes(color = park.labels), alpha = 0.8)  
+       }
+
+}
  # 
  # 
  

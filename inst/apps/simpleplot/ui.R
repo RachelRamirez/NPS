@@ -53,8 +53,8 @@ ui <- fluidPage(
      
      tabsetPanel(id = "tabspanel", type = "tabs",
                   
-    tabPanel(title = "Instructions",                   
-             uiOutput(outputId = "instructions")),
+    tabPanel(title = "Instructions",             
+           uiOutput(outputId = "instructions")),
                   
         tabPanel(title = "Plot",                   
                  
@@ -67,42 +67,28 @@ ui <- fluidPage(
                  dataTableOutput(outputId = "table")),
     
         tabPanel(title ="Map",
-             br(),
-             h4("Overview of Data:"),
-             #Select map type >>                                 input$MapType
+                 h5("May take a minute to load..."),
+               h4("Overview of all data:"),
+             #Select map type >>   input$MapType
+             plotOutput(outputId = "map"),
+             h4("Overview of first selected Data: "),
              selectInput(inputId = "MapType", 
-                         label = "Map Type:",
-                         choices =  c("terrain",                                        "roadmap", "hybrid", "toner", "watercolor",  "toner-lite"),
-                         selected = "toner-lite"),
+                         label = "Choose a Map Type:",
+                         choices =  c("terrain", "roadmap", "hybrid", "toner", "watercolor"),
+                         selected = "toner"),
+             plotOutput(outputId = "map2")
              
-             # Select Map Zoom >>                                  input$Zoom
-              h4("3 = Continent, 10 = City, 21 = Building" ),
-             sliderInput(inputId = "Zoom", 
-                         label = "Zoom Level:  3 = Continent, 21 = Building",
-                         min = 3,
-                         max = 21,
-                         value = 3,
-                         step = 2),
-             
-          #    #Select map type >>                                 input$MapType
-          #    h5("osm = open street map, statem = just for toner maps"),
-          #    selectInput(inputId = "Source", 
-          #                label = "Map Source:",
-          #                choices = c("google", "osm", "statem"),
-          #    selected = "google"),
-
-             plotOutput(outputId = "map")
           ),
     
-        # 
-        # tabPanel("Codebook",
-        #          br()
-        # #          uiOutput(outputId = "codebook")
-        # ),
+         
 
          tabPanel("Parallel Plot", 
               h3("Parallel Coorinate Plots enable one to see highly dimensional data"),
-              h5("Change the inputs to the left to see differet axes on the parallel coordinate plot below"),
-              parcoords::parcoordsOutput(outputId = "parcoors")))))
-  
-  )
+              h5("Change the inputs to the left to see different axes on the parallel coordinate plot below"),
+              parcoords::parcoordsOutput(outputId = "parcoors")),
+     
+            tabPanel("Codebook",
+                     br(),
+                     textOutput(outputId = "codebook")
+)))))
+

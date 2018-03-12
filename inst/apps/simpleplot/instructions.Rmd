@@ -12,6 +12,9 @@ vignette: >
 
 The intent of the NPS package is to allow a user to explore the original National Park Service acoustic geospatial dataset and the cleaned NPS data according to assumptions/imputations.  
 
+# Choose points from the plot.
+ The first step is to look at the plot and select some data.  Then look at the points in the data table tab, or look at the points from the map tab. (this will take  a minute)   Or just look at the parallel plot.  You can reorder the order of the parallel plot axes.   You can change the axes by using the same plot tools to the left.  
+
 ## NPS Variables
 
 Change the inputs available on the left-sidebar of the shiny app to explore the relations between variables in the data. The descriptions of most of the geospatial data are available from the NPS Report "Explanatory Variable Generation for Geospatial Sound Modeling" available on the Natural Resource Publications Management website (http://www.nature.nps.gov/publications/nrpm/) search for ''Explanatory variable generation for geospatial soundscape modeling: Standard operating procedure. Natural Resource Report. Natural Resource Report NPS / NRSS / NRR - 2015 / 936'' by Lisa Nelson, Michelle Kinseth, and Thomas Flowe.  A 'codebook' is in development.
