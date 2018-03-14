@@ -29,8 +29,8 @@ data('cleandata')
 #May be needed--from Maj Freels
 # dataSource <- as.data.frame(get('dataSource', envir = myenv))
 # cleandata <- as.data.frame(get('cleandata', envir = myenv))
-# dataSource <- as.data.frame(('dataSource'))
-# cleandata <- as.data.frame(('cleandata'))
+ dataSource <- data.frame(dataSource)
+cleandata <- data.frame(cleandata)
 
 
 
@@ -58,9 +58,6 @@ data('cleandata')
    
   
  
- data('cleandata')
- # data('cleandata')
- cleandata <- as.data.frame(cleandata)
  
  
  
@@ -148,31 +145,34 @@ data('cleandata')
  #'}
  #'@import ggmap 
  
- 
  # spatialData(data = rv$Data, selected= input$plot_brush, maptype = input$MapType, zoom = input$Zoom)
  
  spatialData <- function(data, MapType, Zoom = 3, selected= 1) {
     #Default to Overview Map if nothing is selected   
     #Center the map around ______ 
-   location = "US"
- 
-     map_1 <- get_map(location = location, maptype = MapType, zoom = 4, source = ifelse(MapType == "toner", "stamen", "google"))
+    
    
      if(selected ==  1){      
-      ggmap::ggmap(map_1, 
+       map_1 <- get_map(location = "US", maptype = MapType, zoom = 4, source = ifelse(MapType == "toner", "stamen", "google"))
+       
+       ggmap::ggmap(map_1, 
               base_layer = ggplot(data, aes(x = Longitude, y = Latitude, label = park))) + 
              geom_label(aes(color = LCLUCI.labels)) #+ 
   #            geom_text(check_overlap = TRUE) 
        }else{
          
-        location = c(lat =   data$Latitude[1], lon = data$Longitude[1])
+         data2 <- data[1,]
          
-     map_2 <- get_map(location = location ,  maptype = MapType, zoom = "auto", scale = "auto", source = ifelse(MapType == "toner", "stamen", "google"))
+        Location = c("lat" =  data2[Latitude], "lon" = data2[Longitude])
+         
+     map_2 <- get_map(location = Location,  maptype = MapType, zoom = "auto", scale = "auto", source = ifelse(MapType == "toner", "stamen", "google"))
+     
         ggmap::ggmap(map_2, extent = "device",                  
                      base_layer = ggplot(data, aes(x = Longitude, y = Latitude, label = park))) + 
           geom_label(aes(color = LCLUCI.labels)) + 
-        geom_text(check_overlap = TRUE)         
-        geom_point(aes(color = park.labels), alpha = 0.8)  
+        geom_text(check_overlap = TRUE)      +   
+        geom_point(aes(color = park.labels), alpha = 0.8)  + 
+          facet_wrap(facets = ~LCLUCI.labels)
        }
 
 }
