@@ -1,0 +1,52 @@
+---
+title: "Elliott NPS Review"
+author: "1st Lt Jake Elliott"
+date: "15 Mar 2018"
+output: html_document
+---
+
+
+## Accuracy
+
+### Are the results accurate?
+
+* The results are accurate and presentation of information is clear
+* Clean data exploration capability
+
+### Is it clear how the results were computed?
+
+* Very clear, the parallel plot especially - nice way to represent mutlidimensional data
+* No hidden or confounding methods; transition from input to output is intuitive in both code and app
+
+## Compilation
+
+### Did the analytic work?
+
+* Yes, `NPS` installed without any errors, however `parcoords` package needed to be installed separately:
+  + initial call to `run_my_app()` threw back an error indicating that the `parcoords` package does not exist within the scope of the `NPS` package (i.e. dependencies were not being downloaded properly)
+
+* The `parcoords` issue was easily solved through manual installation of package; after, `run_my_app()` generates without complication
+
+* Data tab did not produce an output and unfortunately neither did the Map tab, the latter would have been particularly interesting
+
+### Were errors encountered when executing code according to documentation?
+
+* Within each working tab, everything seemed to operate well, without errors
+
+## Ease of use
+
+### Is it clear how to use the analytic?
+
+* Yes, the instruction page with data references was a particuarly nice touch
+
+* Most of the x and y-axis options are obscure to the layman, but due to the amount of options I can understand the challenge associated with representing them meaningfully in this context
+
+### Are the visualizations/plots interpretable?
+
+* As previously mentioned, the data labels are obscure; but, the relationships are clear, if that makes sense. The scatter plots give clear insight into 2D correlations, and the parallel plots are pretty great for >2D
+
+## Overall
+
+I like this package - the Shiny app is perfect for data exploration and what works is intuitive and easy to operate. *Excellent (45/50)*
+
+
